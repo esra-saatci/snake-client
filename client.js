@@ -8,11 +8,20 @@ const connect = function() {
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
   // attach an event handler to handle incoming data 
+  
+  conn.on('connect', () => {
+    console.log("Successfully connected to game server")
+    conn.write('Name: ES');
+  });
+
   conn.on('data', (data) => {
-    console.log("you ded cuz you idled")
+    console.log(data)
   });
 
   return conn;
 }
 
+
 module.exports = {connect};
+
+
